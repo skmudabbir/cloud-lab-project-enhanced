@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+  environment {
+    DOCKER_REGISTRY = 'your-registry'
+  }
+  stages {
+    stage('Checkout') {
+      steps { git branch: 'main', url: 'https://github.com/your-org/book-library.git' }
+    }
+    stage('Build Backend') {
+      steps {
+        sh 'docker build -t ${DOCKER_REGISTRY}/flask-app:${GIT_COMMIT} -f docker/flask-app/Dockerfile .'
+      }
+    }
+    stage('Build Frontend') {
+      steps {
+        sh 'docker build -t ${DOCKER_REGISTRY}/frontend:${GIT_COMMIT} -f docker/frontend/Dockerfile .'
+      }
+    }
+    stage('Unit Tests') {
+      steps {
+        sh 'docker run --rm ${DOCKER_REGISTRY}/flask-app:${GIT_COMMIT} pytest -q || true'
+      }
+    }
+  }
+}

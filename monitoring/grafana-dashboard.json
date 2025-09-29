@@ -1,0 +1,6 @@
+{
+  "title": "Book Library Dashboard",
+  "panels": [
+    { "type": "graph", "title": "Requests (demo placeholder)" }
+  ]
+}

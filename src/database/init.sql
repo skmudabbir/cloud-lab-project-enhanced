@@ -1,0 +1,8 @@
+-- src/database/init.sql
+CREATE TABLE IF NOT EXISTS book (
+  bookid INT AUTO_INCREMENT PRIMARY KEY,
+  name   VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL,
+  price  DECIMAL(10,2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

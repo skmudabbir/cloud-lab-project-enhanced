@@ -1,0 +1,27 @@
+# Node / React
+node_modules/
+build/
+dist/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Docker
+*.pid
+db_data/
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Artifacts
+*.zip
+docs/screenshots/
